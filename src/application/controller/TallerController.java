@@ -19,7 +19,7 @@ public class TallerController {
 
     @FXML
     void clickTest(ActionEvent event) {
-    	System.out.println("Hola Mundo");
+    	System.out.println("Hola Testeando");
     }
 
     @FXML

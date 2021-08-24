@@ -14,6 +14,7 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("./view/Taller.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Concurrencia en java");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

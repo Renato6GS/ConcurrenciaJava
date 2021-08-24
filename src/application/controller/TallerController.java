@@ -15,16 +15,16 @@ public class TallerController {
     private URL location;
 
     @FXML
-    private Button btnTest;
+    private Button btnAgregar;
 
     @FXML
-    void clickTest(ActionEvent event) {
-    	System.out.println("Hola Mundo");
+    void clickBtnAgregar(ActionEvent event) {
+    	System.out.println("TEST");
     }
 
     @FXML
     void initialize() {
-        assert btnTest != null : "fx:id=\"btnTest\" was not injected: check your FXML file 'Taller.fxml'.";
+        assert btnAgregar != null : "fx:id=\"btnAgregar\" was not injected: check your FXML file 'Taller.fxml'.";
 
     }
 }

@@ -11,52 +11,52 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="925.0" prefWidth="1280.0" styleClass="pantalla" stylesheets="@../partials/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TallerController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="workSpace3" fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/2.GRUA_SIN_CARRO_OPCION1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="workSpace2" fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/1.GRUA_CON_CARRO.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="697.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="workSpace1" fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="697.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/2.GRUA_SIN_CARRO_OPCION1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mecanico3" fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/MECANICO_BLANCO.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mecanico2" fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/MECANICO_COLOR.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="712.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mecanico1" fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="712.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/MECANICO_BLANCO.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteEsperando4" fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteEsperando3" fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteEsperando2" fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteEsperando1" fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="652.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_2.png" />
          </image>
@@ -66,17 +66,17 @@
             <Image url="@../partials/AUTO_LISTO.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteAtendido3" fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteAtendido2" fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_1.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="clienteAtendido1" fitHeight="89.0" fitWidth="67.0" layoutX="540.0" layoutY="723.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/CLIENTE_OPCION_1.png" />
          </image>
@@ -94,22 +94,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="192.0" prefHeight="33.0" prefWidth="51.0" style="-fx-background-color: blue;" text="12" textFill="WHITE">
+      <Label fx:id="labelClientesEnEspera" alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="192.0" prefHeight="33.0" prefWidth="51.0" style="-fx-background-color: blue;" text="12" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="250.0" prefHeight="33.0" prefWidth="103.0" text="Esperando">
+      <Label fx:id="labelEstadoMecanico3" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="250.0" prefHeight="33.0" prefWidth="103.0" text="Esperando">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="515.0" prefHeight="33.0" prefWidth="103.0" text="Atendiendo">
+      <Label fx:id="labelEstadoMecanico2" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="515.0" prefHeight="33.0" prefWidth="103.0" text="Atendiendo">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="779.0" prefHeight="33.0" prefWidth="103.0" text="Cobrando">
+      <Label fx:id="labelEstadoMecanico1" alignment="CENTER" contentDisplay="CENTER" layoutX="612.0" layoutY="779.0" prefHeight="33.0" prefWidth="103.0" text="Cobrando">
          <font>
             <Font size="18.0" />
          </font>
@@ -119,7 +119,7 @@
             <Image url="@../partials/AUTO_LISTO.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="874.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="autoListo1" fitHeight="150.0" fitWidth="200.0" layoutX="874.0" layoutY="754.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../partials/AUTO_LISTO.png" />
          </image>
@@ -130,5 +130,15 @@
          </font>
       </Label>
       <Line endX="773.0" layoutX="212.0" layoutY="118.0" startX="-136.0" stroke="WHITE" strokeWidth="5.0" />
+      <ImageView fx:id="autoListo2" fitHeight="150.0" fitWidth="200.0" layoutX="874.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../partials/AUTO_LISTO.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="autoListo3" fitHeight="150.0" fitWidth="200.0" layoutX="874.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../partials/AUTO_LISTO.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

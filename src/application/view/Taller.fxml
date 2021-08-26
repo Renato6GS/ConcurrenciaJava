@@ -18,7 +18,7 @@
       </ImageView>
       <ImageView fx:id="workSpace2" fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../partials/1.GRUA_CON_CARRO.png" />
+            <Image url="@../partials/2.GRUA_SIN_CARRO_OPCION1.png" />
          </image>
       </ImageView>
       <ImageView fx:id="workSpace1" fitHeight="150.0" fitWidth="200.0" layoutX="733.0" layoutY="697.0" pickOnBounds="true" preserveRatio="true">
@@ -33,7 +33,7 @@
       </ImageView>
       <ImageView fx:id="mecanico2" fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../partials/MECANICO_COLOR.png" />
+            <Image url="@../partials/MECANICO_BLANCO.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mecanico1" fitHeight="58.0" fitWidth="70.0" layoutX="636.0" layoutY="712.0" pickOnBounds="true" preserveRatio="true">

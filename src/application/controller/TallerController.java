@@ -92,19 +92,21 @@ public class TallerController implements Runnable {
     	labelEstadoMecanico1.setText("Atendiendo");
     }
     
-    private boolean cliente;
-    private static int clientes = 1;
+    public boolean cliente;
+    public static int clientes = 0;
+    public static int aumentar = 0;
   
-	private static boolean estadoMecanicos[] = new boolean[3]; // false = Está disponible, true = está trabajando
+	public static boolean estadoMecanicos[] = new boolean[3]; // false = Está disponible, true = está trabajando
 	
-	private int clientesEnEspera = 0; // Esto es para el label de espera
-	private static Object lock = new Object();
+	public int clientesEnEspera = 0; // Esto es para el label de espera
+	public static Object lock = new Object();
 	static Random rand = new Random(System.nanoTime());
 	ArrayList<Thread> hilos = new ArrayList<Thread>();
 	Runnable runnable = null;
-	private int nHilos;
+	public int nHilos;
 	
-	public TallerController() {}
+	public TallerController() {
+	}
 	
 	public TallerController(boolean cliente) {
 		this.cliente = cliente;
@@ -112,18 +114,10 @@ public class TallerController implements Runnable {
 
 	@Override
 	public void run() {
-//		Runnable updater = new Runnable() {
-//			@Override
-//			public void run() {
-//				texto();
-//			}
-//		};
 		if(cliente) 
 			esCliente();
 		else 
 			esMecanico();
-//		Platform.runLater(updater);
-		
 	}
 	
 	private void esCliente() {
@@ -133,39 +127,21 @@ public class TallerController implements Runnable {
 					if(!estadoMecanicos[0]) { // false = disponible
 						synchronized (lock) {
 							estadoMecanicos[0] = !estadoMecanicos[0];
-							System.out.println("Estoy con el mecanico 1");
+							mecanico = 0;
 						}
-//						estadoMecanicos[0] = cambiarMecanico(mecanico1, workSpace1, estadoMecanicos[0]);
-//						clienteAtendido1.setVisible(true);
-//						Runnable updater = new Runnable() {
-//							@Override
-//							public void run() {
-//								texto();
-//							}
-//						};
-						Platform.runLater(() -> {
-							labelEstadoMecanico1.setText("holaa");
-							System.out.println("holaaaa");
-						});
-						
 						try {
 							Thread.sleep(3000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-//						lock.notifyAll();
 						synchronized (lock) {
 							lock.notifyAll();
 						}
-//						Platform.runLater(updater);
-//						
-//						break bucle;
 					}
 					else if(!estadoMecanicos[1]) {
 						synchronized (lock) {
 							estadoMecanicos[1] = !estadoMecanicos[1];
-							System.out.println("Estoy con el mecanico 2");
-//							lock.notifyAll();
+							mecanico = 1;
 						}
 						try {
 							Thread.sleep(3000);
@@ -179,7 +155,7 @@ public class TallerController implements Runnable {
 					else if(!estadoMecanicos[2]) {
 						synchronized (lock) {
 							estadoMecanicos[2] = !estadoMecanicos[2];
-							System.out.println("Estoy con el mecanico 3");
+							mecanico = 2;
 						}
 						try {
 							Thread.sleep(3000);
@@ -190,10 +166,28 @@ public class TallerController implements Runnable {
 							lock.notifyAll();
 						}
 					}
+//					clientes = clientes != 0 ? clientes - 1 : clientes;
 					break bucle;
 				} else {
 					try {
-						lock.wait();
+						int time = 0;
+						synchronized (lock) {
+							clientes++;
+							int j = clientes;
+							for (int i = 3; i < j; i+=3) {
+//								aumentar = i % 3 == 0 ? aumentar + 1 : aumentar;
+								aumentar = j % i == 0 ? aumentar + 1 : aumentar;
+							}
+							time = aumentar;
+//							aumentar = clientes > 3 ? aumentar + 1 : 0;
+//							clientes+=2;
+//							aumentar = clientes == 6 ? aumentar + 1 : 0;
+//							clientes--;
+						}
+						System.out.println(clientes);
+//						Thread.sleep(3000 + (aumentar * 3000));
+						Thread.sleep(3000 + (time * 3000));
+						aumentar = aumentar > 0 ? aumentar - 1 : 0;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -205,72 +199,6 @@ public class TallerController implements Runnable {
 	private void esMecanico() {
 		synchronized (lock) {
 			while(true) {
-//				if(estadoMecanicos[0]) {
-//					try {
-//						Thread.sleep(2000);
-//						labelEstadoMecanico1.setText("Esperando");
-//						clienteAtendido1.setVisible(false);
-//						autoListo1.setVisible(true);
-//						TranslateTransition tt = new TranslateTransition(Duration.millis(2000), autoListo1);
-//						tt.setToX(400f);
-//						tt.play();
-////						EL TIEMPO QUE TARDA EL MECÁNICO DEBE SER MAYOR A 2 SEGUNDOS SÍ O SÍ
-//						if (!estadoMecanicos[0]) {
-//							autoListo1.setVisible(false);
-//							TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), autoListo1);
-//							tt2.setToX(0f);
-//							tt2.play();
-//						}
-//						estadoMecanicos[0] = !estadoMecanicos[0];
-//						lock.notifyAll();
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//				if(estadoMecanicos[1]) {
-//					try {
-//						Thread.sleep(2000);
-//						labelEstadoMecanico2.setText("Esperando");
-//						clienteAtendido2.setVisible(false);
-//						autoListo2.setVisible(true);
-//						TranslateTransition tt = new TranslateTransition(Duration.millis(2000), autoListo2);
-//						tt.setToX(400f);
-//						tt.play();
-////						EL TIEMPO QUE TARDA EL MECÁNICO DEBE SER MAYOR A 2 SEGUNDOS SÍ O SÍ
-//						if (!estadoMecanicos[1]) {
-//							autoListo2.setVisible(false);
-//							TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), autoListo2);
-//							tt2.setToX(0f);
-//							tt2.play();
-//						}
-//						estadoMecanicos[1] = !estadoMecanicos[1];
-//						lock.notifyAll();
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//				if(estadoMecanicos[2]) {
-//					try {
-//						Thread.sleep(2000);
-//						labelEstadoMecanico1.setText("Esperando");
-//						clienteAtendido1.setVisible(false);
-//						autoListo1.setVisible(true);
-//						TranslateTransition tt = new TranslateTransition(Duration.millis(2000), autoListo3);
-//						tt.setToX(400f);
-//						tt.play();
-////						EL TIEMPO QUE TARDA EL MECÁNICO DEBE SER MAYOR A 2 SEGUNDOS SÍ O SÍ
-//						if (!estadoMecanicos[2]) {
-//							autoListo3.setVisible(false);
-//							TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), autoListo3);
-//							tt2.setToX(0f);
-//							tt2.play();
-//						}
-//						estadoMecanicos[2] = !estadoMecanicos[2];
-//						lock.notifyAll();
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
 				if(estadoMecanicos[0]) {
 					System.out.println("Mecanico 1, estoy disponible.");
 					estadoMecanicos[0] = !estadoMecanicos[0];
@@ -328,30 +256,9 @@ public class TallerController implements Runnable {
     	runnable = new TallerController(true); // Cliente
     	hilos.add(new Thread(runnable));
     	hilos.get(nHilos).start();
-    
-//    	hilos.add(new Thread(() -> {
-//    		Platform.runLater(() -> {
-//    			texto();
-//    		});
-//    	}));
     	
-//		estadoMecanicos[0] = cambiarMecanico(mecanico1, workSpace1, estadoMecanicos[0]);
-//		estadoMecanicos[1] = cambiarMecanico(mecanico2, workSpace2, estadoMecanicos[1]);
-//		estadoMecanicos[2] = cambiarMecanico(mecanico3, workSpace3, estadoMecanicos[2]);
-
-		
-//		Esta es la lógica para aparecer el auto y que se anime a la derecha. Solo funciona por ahora en el 1
-//		autoListo1.setVisible(true);
-//		TranslateTransition tt = new TranslateTransition(Duration.millis(2000), autoListo1);
-//		tt.setToX(400f);
-//		tt.play();
-////		EL TIEMPO QUE TARDA EL MECÁNICO DEBE SER MAYOR A 2 SEGUNDOS SÍ O SÍ
-//		if (!estadoMecanicos[0]) {
-//			autoListo1.setVisible(false);
-//			TranslateTransition tt2 = new TranslateTransition(Duration.millis(2000), autoListo1);
-//			tt2.setToX(0f);
-//			tt2.play();
-//		}
+    	Grafico j = new Grafico(1);
+    	j.cambiar();
     }
     
     /**
@@ -361,12 +268,12 @@ public class TallerController implements Runnable {
      * @param estadoMecanico
      * @return Retorna un estado inverso.
      */
-    private boolean cambiarMecanico(ImageView mecanico, ImageView workSpace, boolean estadoMecanico) {
-    	String cambiarMecanico = estadoMecanico != true 
+    public void cambiarMecanico(ImageView mecanico, ImageView workSpace, boolean estadoMecanico) {
+    	String cambiarMecanico = estadoMecanico != false 
     			? "src/application/partials/MECANICO_COLOR.png"
     			: "src/application/partials/MECANICO_BLANCO.png";
     	
-    	String cambiarWorkSpace = estadoMecanico != true 
+    	String cambiarWorkSpace = estadoMecanico != false 
     			? "src/application/partials/1.GRUA_CON_CARRO.png"
     			: "src/application/partials/2.GRUA_SIN_CARRO_OPCION1.png";
     	
@@ -378,7 +285,7 @@ public class TallerController implements Runnable {
     	Image image2 = new Image(file2.toURI().toString());
     	workSpace.setImage(image2);
     	
-		return !estadoMecanico;
+//		return !estadoMecanico;
     }
 
     @FXML
@@ -407,5 +314,117 @@ public class TallerController implements Runnable {
         labelEstadoMecanico1.setText("Esperando");
         labelEstadoMecanico2.setText("Esperando");
         labelEstadoMecanico3.setText("Esperando");
+    }
+    
+    public static int mecanico = 0;
+    
+    public class Grafico extends Thread {
+    	
+    	
+    	public Grafico() {}
+    	
+    	public Grafico(int j) {
+    		try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	
+    	@Override
+    	public void run() {
+    		if (clientes > 0) {
+    			try {
+//					Thread.sleep(2000 + (clientes*500));
+    				int value = aumentar;
+    				System.out.println("hola desde clientes");
+    				System.out.println("--- aumentar: " + aumentar);
+//					Thread.sleep(3000 + (aumentar * 3000));
+					Thread.sleep(3000 + (value * 3000));
+//					clientes--;
+					clientes = clientes > 0 ? clientes - 1 : 0;
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+    		}
+    		
+    		if (estadoMecanicos[0] && mecanico == 0) {
+    			cambiosMecanico(estadoMecanicos[0], labelEstadoMecanico1, clienteAtendido1, mecanico1, workSpace1, autoListo1);
+    		} else if (estadoMecanicos[1] && mecanico == 1) {
+    			cambiosMecanico(estadoMecanicos[1], labelEstadoMecanico2, clienteAtendido2, mecanico2, workSpace2, autoListo2);
+    		} else if (estadoMecanicos[2] && mecanico == 2) {
+    			cambiosMecanico(estadoMecanicos[2], labelEstadoMecanico3, clienteAtendido3, mecanico3, workSpace3, autoListo3);
+    		} 
+    	}
+    	
+    	public void cambiar() {
+    		System.out.println(clientes);
+    		if (clientes > 0) {
+    			System.out.println("hola 1");
+    			Grafico h4 = new Grafico();
+    			h4.start();
+    		}
+    		
+    		if (estadoMecanicos[0] && mecanico == 0) {
+    			Grafico h1 = new Grafico();
+    			h1.start();
+    		} else if (estadoMecanicos[1] && mecanico == 1) {
+    			Grafico h2 = new Grafico();
+    			h2.start();
+    		} else if (estadoMecanicos[2] && mecanico == 2) {
+    			Grafico h3 = new Grafico();
+    			h3.start();
+    		} 
+    	}
+    	
+    	public void cambiosMecanico(boolean originalState, Label estadoMecanico, ImageView cliente, ImageView mecanico, ImageView workSpace, ImageView autoListo) {
+//    		boolean originalState = estadoMecanicos[0];
+    		
+    		Platform.runLater(() -> {
+    			estadoMecanico.setText("Atendiendo");
+    			cliente.setVisible(true);
+				cambiarMecanico(mecanico, workSpace, originalState);
+			});
+    		
+    		try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		
+    		try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		
+    		Platform.runLater(() -> {
+    			estadoMecanico.setText("Esperando");
+    			cliente.setVisible(false);
+				cambiarMecanico(mecanico, workSpace, !originalState);
+				
+//				Esta es la lógica para aparecer el auto y que se anime a la derecha. Solo funciona por ahora en el 1
+				autoListo.setVisible(true);
+				TranslateTransition tt = new TranslateTransition(Duration.millis(2000), autoListo);
+				tt.setToX(400f);
+				tt.play();
+				
+    		});
+    		
+    		try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    		
+    		Platform.runLater(() -> {
+//				Animación para retornar:
+    			autoListo.setVisible(false);
+				TranslateTransition tt2 = new TranslateTransition(Duration.millis(500), autoListo);
+				tt2.setToX(0f);
+				tt2.play();
+    		});
+    	}
     }
 }
